@@ -1,0 +1,94 @@
+<div class="container p-5 rounded-3 shadow-lg">
+    <div>
+        <h2 class="fw-bolder border-bottom fs-5 pb-2">Customer Information</h2>
+    </div>
+
+    <div class="row py-5">
+        <div class="col-lg-8 shadow-lg p-5 rounded-2">
+            <form [formGroup]="userInfo">
+                <input type="email" class="form-control" placeholder="Enter Your Email" formControlName="email">
+                <div class="d-flex my-3">
+                    <input type="text"  placeholder="Enter Your First Name" class="form-control me-3" formControlName="firstName">
+                    <input type="email" placeholder="Enter Your last Name" class="form-control" formControlName="lastName">
+                </div>
+            
+                <div formArrayName="phones" class="d-flex my-3" *ngFor="let phone of userInfo.get('phones')?.getRawValue() , let i = index">
+                    <input type="tel" class="form-control w-50" placeholder="{{'enter your'+(i+1)+ 'st phone'}}" [formControlName]="i">
+                    <button class="btn btn-blue rounded-circle ms-5 fw-bolder fs-6"  (click)="addPhoneInput($event)">+</button>
+                    <button class="btn btn-danger rounded-circle ms-5 fw-bolder fs-6"  (click)="removePhoneInput($event)">-</button>
+                </div>
+       
+            </form>
+            <div class="d-flex justify-content-start">
+                <div class="form-check me-5">
+                    <input class="form-check-input"  value="cash" type="radio" name="flexRadioDefault" id="cash" [(ngModel)]="paymentMethod">
+                    <label class="form-check-label fw-bolder fs-6" for="cash">
+                      Cash <span><i class="fa-solid fa-money-bills fa-lg text-black"></i></span>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input"   value="visa"  type="radio" name="flexRadioDefault" id="visa" [(ngModel)]="paymentMethod">
+                    <label class="form-check-label fw-bolder fs-6" for="visa" >
+                      Debit/Credit Card <span><i class="fa-brands fa-cc-visa fa-lg text-black"></i></span>
+                    </label>
+                  </div>
+              </div>
+        </div>
+        <div class="offset-lg-1 col-lg-3 p-2">
+            <div class=" p-3 orderSumry">
+                <h3 class="fs-6 fw-bolder py-2 mb-3 border-bottom border-black">Order Summary</h3>
+                <div class="d-flex justify-content-between px-2">
+                    <p class="fw-bolder fs-7">Price</p>
+                    <p class="fw-bolder fs-7">{{cart.totalCartPrice |currency:'EGP'}}</p>
+                </div>
+                <div class="d-flex justify-content-between px-2">
+                    <p class="fw-bolder fs-7">Shipping</p>
+                    <p class="fw-bolder fs-7">{{0 | currency:'EGP'}}</p>
+                </div>
+                <div class="d-flex justify-content-between px-2 border-bottom border-black pb-4">
+                    <p class="fw-bolder fs-7">Tax</p>
+                    <p class="fw-bolder fs-7">{{0 | currency:'EGP'}}</p>
+                </div>
+                <div class="d-flex justify-content-between px-2 pt-2">
+                    <p class="fw-bolder fs-7">Total Price</p>
+                    <p class="fw-bolder fs-7">{{cart.totalCartPrice | currency:'EGP'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div *ngIf="paymentMethod">
+    <div>
+        <h2 class="fw-bolder border-bottom fs-5 pb-2">Shipping Address</h2>
+    </div>
+
+    <div class="row py-5">
+        <div class="col-lg-8 shadow-lg p-5 rounded-2">
+            <form [formGroup]="shippingAddress">
+                <div>
+                    <p-dropdown formControlName="city" class="form-control my-3" formControlName="city" [options]="EgyptCities" ></p-dropdown>
+                    <div *ngIf="shippingAddress.get('city')?.errors && shippingAddress.get('city')?.touched">
+                        <p class="fw-bolder fs-7 text-danger px-1" *ngIf="shippingAddress.get('city')?.getError('required')">City Is Required</p>
+                    </div>
+                   </div>
+                <input  type="text" class="form-control my-3" placeholder="Adreess" formControlName="details">
+                <div *ngIf="shippingAddress.get('details')?.errors && shippingAddress.get('details')?.touched">
+                    
+                </div>
+                <input type="tel" class="form-control my-3" placeholder="Phone" formControlName="phone">
+                <div *ngIf="shippingAddress.get('phone')?.errors && shippingAddress.get('phone')?.touched">
+                    <p class="fw-bolder fs-7 text-danger px-1" *ngIf="shippingAddress.get('phone')?.getError('required')">Phone Number Is Required</p>
+                    <p class="fw-bolder fs-7 text-danger px-1" *ngIf="shippingAddress.get('phone')?.getError('pattern')">Phone Number Is Invalid</p>
+                </div>
+
+                <button class="btn btn-blue fw-bolder w-100" *ngIf="paymentMethod=='cash' && shippingAddress.valid" type="submit" (click)="payCashOnDelivery(shippingAddress)">Check Out</button>
+                <button class="btn btn-blue fw-bolder w-100" *ngIf="paymentMethod=='visa'&& shippingAddress.valid" type="submit" (click)="payByVisa(shippingAddress)">Check Out</button>
+            </form>
+        </div>
+      
+    </div>
+
+  </div>
+    
+
+</div>

@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-sm ">
+      <div class="container align-items-center">
+        
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand fw-bolder mx-auto fs-2" href="#"><img src="assets/img-final/ba37da19d94a2bf474f4e05419f02fd7.png" class="logo"> <span>Luminae</span></a>
+        <div  class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul *ngIf="isLoggIn" class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link fw-bolder me-4" routerLink="home"  routerLinkActive="active">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bolder me-4" routerLink="category" routerLinkActive="active">CATEGORY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bolder me-4" routerLink="brand" routerLinkActive="active">BRANDS</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link " href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa-brands fa-facebook-f fa-lg"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa-brands fa-telegram fa-lg"></i></a>
+                </li>
+                <li *ngIf="!isLoggIn" class="nav-item">
+                    <a class="nav-link" routerLink="Register">SIGN UP</a>
+                </li>
+                <li *ngIf="!isLoggIn" class="nav-item">
+                    <a class="nav-link" routerLink="signIn">LOGIN</a>
+                </li>
+                <li (click)="logOut()" *ngIf="isLoggIn" class="nav-item logOut">
+                    <a class="nav-link" >LOGOUT</a>
+                </li>
+            </ul>
+          
+        </div>
+      <div >
+        <ul *ngIf="isLoggIn" class=" d-flex navbar-nav flex-row justify-content-between">
+            <li class="nav-item me-2">
+                <a class="nav-link" routerLink="cart"><i class="fa-solid fa-cart-shopping fa-lg"><span *ngIf="numOfCartItems>0" class="text-blue fw-bolder fst-italic fs-7">{{numOfCartItems}}</span></i></a>
+            </li>
+            <li class="nav-item me-2">
+                <a class="nav-link" routerLink="wishList"><i [class]="hasFavoutiteProduct? 'text-red':''" class="fa-solid fa-heart fa-lg"></i></a>
+            </li>
+        </ul>
+      </div>
+  </div>
+</nav>
+
+

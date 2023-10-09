@@ -1,0 +1,15 @@
+.col-xl-3{
+    transition: all 0.5s;
+}
+.col-xl-3:hover{
+    transform: scale(1.1) ;
+    box-shadow: 0px,0px,10px,gray !important ;
+
+}
+.category{
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.category:hover{
+    transform: scale(1.15);
+}

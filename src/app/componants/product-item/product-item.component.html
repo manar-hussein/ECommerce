@@ -1,0 +1,20 @@
+<div class="shadow-lg rounded-3 d-flex flex-column justify-content-center align-items-center position-relative" >
+  <div class="d-flex justify-content-between main cursorPointer" [routerLink]="['/product',product.id]">
+    <img [src]="product.imageCover" class=" img rounded-start-3" [routerLink]="['/product',product.id]">
+    <div class="p-3 body">
+    <div>
+     <h3 class="fs-7 fw-bolder text-main m-0">{{product.brand.name}}</h3>
+     <p class="fs-6 text-secondary fw-normal m-0">
+     {{product.title |descriptionSummry :2}}</p>
+     <div class="d-flex justify-content-between align-items-center"> 
+         <p class="fs-7 text-secondary fw-normal m-0">{{product.price | currency:'EGP'}}</p>
+         <div class="d-flex align-items-start justify-content-center">
+             <span><i class="fa-solid fa-star fa-xl fs-7" style="color: #ffea00;"></i></span>
+             <p class=" mt-1 fs-7 text-secondary fw-normal m-0">{{product.ratingsAverage}}</p>
+         </div>
+     </div>
+    </div>
+    </div>
+  </div>
+  <app-add-product [addedToWishList]="product.favoutite" [productId]="product.id"></app-add-product>
+</div>

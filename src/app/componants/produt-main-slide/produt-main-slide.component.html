@@ -1,0 +1,33 @@
+<div class="container-fluid vh-100">
+    <div class="row p-5 justify-content-center align-items-center">
+         <div class="col-md-1 d-flex flex-column mainSize" >
+            <div class="mainSize" *ngFor="let img of userChossenProduct.images" let i="index">
+                <img  [src]="img" class="w-100" (click)="changeMainPhoto($event)">
+            </div>
+        </div>
+        <div class="col-md-5 mainSize">
+            <img [src]="clickedPhotoSrc"  class="w-100 mainImg">
+        </div>
+        <div class="col-12 mobileMainImg">
+            <img [src]="clickedPhotoSrc"  class="w-100  mainImg">
+        </div> 
+        <div class="col-12 d-flex mobileSmallImg justify-content-center my-4" >
+                <img *ngFor="let img of userChossenProduct.images" let i="index" [src]="img" class="w-25 " (click)="changeMainPhoto($event)">
+        </div>
+      
+        <div class="col-md-6">
+            <h3 class="fs-4 fw-bold">{{userChossenProduct.title}}</h3>
+            <h4 class="fs-5 fw-bold">{{userChossenProduct.price | currency:'EGP'}}</h4>
+            <div class="py-3">
+                <h5 class="fs-5 fw-bold text-red fst-italic border-bottom pb-2 d-inline border-2">Product Description</h5>
+                <p class="mt-4 fw-bolder text-muted">{{userChossenProduct.description}}</p>
+            </div>
+            <div class="py-4 text-center">
+                <h5 class="fs-6 fw-bold text-red fst-italic pb-2 d-inline me-5">{{userChossenProduct.brand.name}}</h5>
+                <h5 class="fs-6 fw-bold text-red fst-italic pb-2 d-inline mx-5">{{userChossenProduct.category.name}}</h5>
+            </div>
+            <button (click)="addToCart()" class="btn w-100 btn-outline-dark fw-bolder fst-italic">ADD TO CART</button>
+        </div>
+
+    </div>
+</div>

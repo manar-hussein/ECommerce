@@ -1,0 +1,16 @@
+.logo{
+    width: 49px;
+    height: 33px;
+}
+.nav-item{
+    font-size: 14px;
+}
+.logOut{
+    cursor: pointer;
+}
+.active{
+    background-color: var(--background--);
+    color: white !important;
+    border-radius: 10px;
+   
+}

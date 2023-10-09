@@ -1,0 +1,28 @@
+/* .img{
+   width: 40%;
+   height: 200px;
+}
+  .body{
+    width: 60%;
+  }
+  button{
+    transition: all 0.5s;
+  }
+  button:hover{
+    background-color: var(--background--);
+    color: white;
+  } */
+ 
+  .img{
+    width: 40%;
+  }
+  .body{
+    width: 60%;
+  }
+ .but{
+  right: 10%;
+  top: 60%;
+ }
+ .main{
+  height: 180px;
+ }

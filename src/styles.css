@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --mainFont--:'Lato';
+    --buttonColor--:#4172DC;
+    --background--:#262626;
+    --textColor--:#FF2E00;
+}
+body{
+    font-family: var(--mainFont--);
+}
+.fs-7{
+    font-size: 14px;
+}
+.fs-8{
+    font-size: 12px;
+}
+.fs-10{
+    font-size: 10px;
+}
+.text-main{
+    color: #262626;
+}
+.text-secondary{
+    color: #555555;
+}
+.text-blue{
+    color: var(--buttonColor--);
+}
+.text-red{
+    color: var(--textColor--);
+}
+.img{
+    width: 40%;
+  }
+  .body{
+    width: 60%;
+  }
+ .but{
+  right: 10%;
+  top: 60%;
+ }
+ .main{
+  height: 180px;
+ }
+html, body { height: 100%; }
+.btn-blue
+{
+    background-color: var(--buttonColor--);
+    color: white;
+    transition: all 0.5s;
+}
+.btn-blue:hover
+{
+    background-color: #f1f1f1;
+    color: black !important;
+    box-shadow: 0px, 0px , 20px , black;
+
+}
+
+.p-ripple
+{
+    background-color: white !important;
+    padding: 10px !important;
+}
+.cursorPointer
+{
+    cursor: pointer;
+}

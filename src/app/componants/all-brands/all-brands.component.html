@@ -1,0 +1,13 @@
+<div class="container-fluid pt-5 bg-dark">
+    <div class="row justify-content-center align-items-center gy-5">
+        <div class="col-xl-3" *ngFor="let brand of allBrands">
+          <div class="text-center mainCard">
+            <img [src]="brand.image" class="rounded-circle customImgWidth shadow-lg mb-2">
+            <div>
+                <h3 class="fw-bolder fs-4 fst-italic text-center text-white">{{brand.name}}</h3>
+            </div>
+            
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+ .mobileMainImg{
+     display: none; 
+}
+.mobileSmallImg{
+    display: none !important; 
+} 
+
+
+@media screen And (max-width:900px) {
+    .mobileSmallImg{
+        display: block !important;
+    }
+    .mainSize{
+        display: none;
+    }
+    .mobileMainImg
+    {
+        display: block !important;
+    }
+    
+}

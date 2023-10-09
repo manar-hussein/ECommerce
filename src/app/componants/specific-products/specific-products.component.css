@@ -1,0 +1,13 @@
+.customImgWidth
+{
+    height: 250px;
+    width: 250px;
+}
+.main
+{
+    transition: all 0.5s;
+}
+.main:hover{
+    transform: scale(1.1);
+    border: solid 2px var(--buttonColor--);
+}

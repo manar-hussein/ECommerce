@@ -1,0 +1,26 @@
+<div class="container rounded-5 shadow-lg p-5">
+    <h2 class="fw-bolder fs-5 border-bottom border-3 pb-1 fst-italic">LOG IN</h2>
+    <div *ngIf="apiErros" class="alert alert-danger rounded-4 p-2 mt-3"><h4  class="fw-bolder fs-6 text-center text-black fst-italic">{{apiErros}}</h4></div> 
+    <form class="py-3" [formGroup]="logInForm" (ngSubmit)="logIn(logInForm)">
+        <label for="email" class="fs-7 p-1 fw-normal">Email:</label>
+        <input type="email" id="email" class="form-control py-2 px-2 mb-3" [class.is-invalid]="logInForm.get('email')?.touched &&logInForm.get('email')?.invalid" [class.is-valid]="logInForm.get('email')?.touched &&logInForm.get('email')?.valid" placeholder="Enter Your email" formControlName="email">
+        <div *ngIf="logInForm.get('email')?.errors && logInForm.get('email')?.touched">
+            <p *ngIf="logInForm.get('email')?.getError('email')" class="fw-bolder fs-7 text-danger px-1">Invalid Email</p>
+            <p *ngIf="logInForm.get('email')?.getError('required')" class="fw-bolder fs-7 text-danger px-1">Email Is Required</p>
+        </div> 
+
+        <label for="password" class="fs-7 p-1 fw-normal">password:</label>
+        <input type="password" id="password" class="form-control py-2 px-2 mb-3" [class.is-invalid]="logInForm.get('password')?.touched &&logInForm.get('password')?.invalid" [class.is-valid]="logInForm.get('password')?.touched &&logInForm.get('password')?.valid" placeholder="Enter Your password" formControlName="password">
+
+        <div *ngIf="logInForm.get('password')?.errors && logInForm.get('password')?.touched">
+            <p *ngIf="logInForm.get('password')?.getError('required')" class="fw-bolder fs-7 text-danger px-1">Password Is Required</p>
+            <p *ngIf="logInForm.get('password')?.getError('pattern')" class="fw-bolder fs-7 text-danger px-1">Password must be more Than 8 character and containes Numbers, UpperCase , LowerCase and Special Character</p>
+        </div>
+
+        <button [disabled]="logInForm.invalid" type="submit" class="btn fst-italic fw-bolder mb-3 fs-7 w-100 text-white">
+            <i *ngIf="isLoading" class="fa-solid fa-spinner fa-spin fa-lg text-white"></i>
+            <p *ngIf="!isLoading" class="fw-bolder fs-7 text-white m-0">SIGN IN</p>
+            </button>
+            <a class="pt-4 text-decoration-none fw-bolder fs-7  border-bottom border-2 border-dark text-dark" routerLink="/forgetPassword">Forget Password?</a>
+    </form>
+</div>

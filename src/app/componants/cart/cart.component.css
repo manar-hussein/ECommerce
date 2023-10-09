@@ -1,0 +1,18 @@
+.orderSumry
+{
+  
+    border-radius: 8px;
+    background: var(--background-color-top-category, #E9E9E9);
+}
+.btn-blue
+{
+    background-color: var(--buttonColor--);
+    transition: all 0.5s;
+}
+.btn-blue:hover
+{
+    background-color: #f1f1f1;
+    color: black !important;
+    box-shadow: 0px, 0px , 20px , black;
+
+}

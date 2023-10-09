@@ -1,0 +1,4 @@
+<div class="d-flex justify-content-between position-absolute but">
+    <button class="btn btn-outline-dark me-3" (click)="addToCart()"><i class="fa-solid fa-cart-shopping fa-lg"></i></button>
+   <button (click)="addToWishList()" class="btn btn-outline-dark"><i [class]="addedToWishList==true? 'text-danger':''" class="fa-solid fa-heart fa-lg"></i></button>
+   </div>

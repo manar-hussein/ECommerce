@@ -1,0 +1,54 @@
+<div class="container rounded-5 shadow-lg p-5">
+    <h2 class="fw-bolder fs-5 border-bottom border-3 pb-1 fst-italic">Sign up</h2>
+    <h4  class="fw-bolder fs-6 text-center text-danger pt-3 fst-italic">{{apiErros}}</h4>
+    <form class="py-3" [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+        <label for="name" class="fs-7 p-1 fw-normal">Name:</label>
+        <input type="text" id="name" class="form-control py-2 px-2 mb-3" placeholder="Enter Your Name" formControlName="name">
+        <div *ngIf="registerForm.get('name')?.errors && (registerForm.get('name')?.touched || isNotValid)">
+            <p *ngIf="registerForm.get('name')?.getError('required')" class="fw-bolder fs-7 text-danger px-1">Name is Required</p>
+            <p *ngIf="registerForm.get('name')?.getError('minlength')" class="fw-bolder fs-7 text-danger px-1">Name MinLength is 3 charcter</p>
+            <p *ngIf="registerForm.get('name')?.getError('maxlength')" class="fw-bolder fs-7 text-danger px-1">Name MaxLength is 10 charcter</p>
+        </div>
+
+        <label for="email" class="fs-7 p-1 fw-normal">Email:</label>
+        <input type="email" id="email" class="form-control py-2 px-2 mb-3" placeholder="Enter Your email" formControlName="email">
+        <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+            <p *ngIf="registerForm.get('email')?.getError('email')" class="fw-bolder fs-7 text-danger px-1">Invalid Email</p>
+            <p *ngIf="registerForm.get('email')?.getError('required')" class="fw-bolder fs-7 text-danger px-1">Email Is Required</p>
+        </div>
+
+        <label for="password" class="fs-7 p-1 fw-normal">password:</label>
+        <input type="password" id="password" class="form-control py-2 px-2 mb-3" placeholder="Enter Your password" formControlName="password">
+        
+        <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+            <p *ngIf="registerForm.get('password')?.getError('required')" class="fw-bolder fs-7 text-danger px-1">Password Is Required</p>
+            <p *ngIf="registerForm.get('password')?.getError('pattern')" class="fw-bolder fs-7 text-danger px-1">Password must be more Than 8 character and containes Numbers, UpperCase , LowerCase and Special Character</p>
+        </div>
+
+        <label for="rePassword" class="fs-7 p-1 fw-normal">rePassword:</label>
+        <input type="Password" id="rePassword" class="form-control py-2 px-2 mb-3" placeholder="Enter Your rePassword" formControlName="rePassword">
+          
+        <div *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched">
+            <p *ngIf="registerForm.get('rePassword')?.getError('required')" class="fw-bolder fs-7 text-danger px-1">Password Is Required</p>
+            <!-- <p *ngIf="registerForm.get('rePassword')?.getError('pattern')" class="fw-bolder fs-7 text-danger px-1">Password must be more Than 8 character and containes Numbers, UpperCase , LowerCase and Special Character</p> -->
+            <p *ngIf="registerForm.get('rePassword')?.getError('rePasswordNotMatch')" class="fw-bolder fs-7 text-danger px-1">RePassword not match</p>
+        </div>
+
+        <label for="phone" class="fs-7 p-1 fw-normal">phone:</label>
+        <input type="tel" id="phone" class="form-control py-2 px-2 mb-3" placeholder="Enter Your phone" formControlName="phone">
+
+        <div *ngIf="registerForm.get('phone')?.errors && registerForm.get('phone')?.touched ">
+            <p *ngIf="registerForm.get('phone')?.getError('required')" class="fw-bolder fs-7 text-danger px-1">Phone Is Required</p>
+            <p *ngIf="registerForm.get('phone')?.getError('pattern')" class="fw-bolder fs-7 text-danger px-1">Invalid Phone Number</p>
+        </div>
+
+
+
+
+        <button [disabled]="registerForm.invalid" type="submit" class="btn fst-italic fw-bolder fs-7 w-100 text-white">
+            <i *ngIf="isLoading" class="fa-solid fa-spinner fa-spin fa-lg text-white"></i>
+            <p *ngIf="!isLoading" class="fw-bolder fs-7 text-white m-0">SIGN UP</p>
+            </button>
+
+    </form>
+</div>

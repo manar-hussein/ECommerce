@@ -1,0 +1,13 @@
+<div class="container py-5">
+    <div class="row justify-content-center align-items-center g-5">
+        <div class="col-xl-3" *ngFor="let category of allCategories">
+          <div class="text-center">
+            <img [src]="category.image" class="rounded-circle customImgWidth shadow-lg">
+            <div>
+                <h3 class="fw-bolder fs-5 fst-italic text-center">{{category.name}}</h3>
+            </div>
+            
+          </div>
+        </div>
+    </div>
+</div>
